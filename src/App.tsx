@@ -22,9 +22,9 @@ Promise.resolve().then(() => {
 
     const consoleProxy = {
       log: (...args: any[]) => {
-        setConsoleOutput(prev => [...prev, args.map(arg =>
+        setConsoleOutput(prev => [...prev, `> ${args.map(arg =>
           typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
-        ).join(' ')])
+        ).join(' ')}`])
       },
       error: (...args: any[]) => {
         setConsoleOutput(prev => [...prev, `Error: ${args.map(arg =>
