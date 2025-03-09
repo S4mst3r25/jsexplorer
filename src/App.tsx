@@ -246,7 +246,7 @@ Promise.resolve().then(() => {
           </div>
 
           <div className="w-2/3 flex flex-col gap-4">
-            <div className="h-[214px] bg-base-200 rounded-lg overflow-hidden border border-base-100">
+            <div className="h-full bg-base-200 rounded-lg overflow-hidden border border-base-100">
               <div className="h-full flex flex-col">
                 <div className="h-[48px] p-3 bg-base-200 border-b border-base-100 flex items-center gap-2">
                   <Globe className="w-5 h-5 text-primary" />
@@ -258,7 +258,7 @@ Promise.resolve().then(() => {
               </div>
             </div>
 
-            <div className="h-[200px] bg-base-200 rounded-lg overflow-hidden border border-base-100">
+            <div className="h-full bg-base-200 rounded-lg overflow-hidden border border-base-100">
               <div className="h-full flex flex-col">
                 <div className="h-[48px] p-3 bg-base-200 border-b border-base-100 flex items-center gap-2">
                   <ListTodo className="w-5 h-5 text-primary" />
@@ -270,7 +270,7 @@ Promise.resolve().then(() => {
               </div>
             </div>
 
-            <div className="h-[200px] bg-base-200 rounded-lg overflow-hidden border border-base-100">
+            <div className="h-full bg-base-200 rounded-lg overflow-hidden border border-base-100">
               <div className="h-full flex flex-col">
                 <div className="h-[48px] p-3 bg-base-200 border-b border-base-100 flex items-center gap-2">
                   <List className="w-5 h-5 text-primary" />
