@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { Terminal, Code2, PlayCircle, Github, Globe, Layers, ListTodo, List } from 'lucide-react'
+import { Terminal, Code2, PlayCircle, Github, Globe, Layers, ListTodo, List, Trash2 } from 'lucide-react'
 import Editor from "@monaco-editor/react"
 
 function App() {
@@ -88,10 +88,10 @@ Promise.resolve().then(() => {
         <div className="w-1/2 flex flex-col gap-4">
           <div className="flex-1 bg-base-200 rounded-lg overflow-hidden border border-base-100">
             <div className="h-full flex flex-col">
-              <div className="flex items-center justify-between p-3 bg-base-200 border-b border-base-100 relative z-10">
+              <div className="h-[48px] flex items-center justify-between px-2 py-3 bg-base-200 border-b border-base-100">
                 <div className="flex items-center gap-2">
                   <Code2 className="w-5 h-5 text-primary" />
-                  <h2 className="text-lg font-semibold">Code</h2>
+                  <h2 className="font-semibold">Code</h2>
                 </div>
                 <button className="btn btn-sm btn-primary" onClick={executeCode}>
                   <PlayCircle className="w-4 h-4" />
@@ -99,35 +99,47 @@ Promise.resolve().then(() => {
                 </button>
               </div>
               <div className="flex-1 overflow-hidden relative z-20">
-                <Editor
-                  height="100%"
-                  defaultLanguage="javascript"
-                  theme="vs-dark"
-                  value={code}
-                  onChange={(value) => setCode(value || '')}
-                  options={{
-                    minimap: { enabled: false },
-                    fontSize: 14,
-                    lineNumbers: "on",
-                    scrollBeyondLastLine: false,
-                    wordWrap: "on",
-                    automaticLayout: true,
-                    fixedOverflowWidgets: true,
-                  }}
-                />
+                <div className="h-full mt-1">
+                  <Editor
+                    height="100%"
+                    defaultLanguage="javascript"
+                    theme="vs-dark"
+                    value={code}
+                    onChange={(value) => setCode(value || '')}
+                    options={{
+                      minimap: { enabled: false },
+                      fontSize: 14,
+                      lineNumbers: "on",
+                      scrollBeyondLastLine: false,
+                      wordWrap: "on",
+                      automaticLayout: true,
+                      fixedOverflowWidgets: true,
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
 
           <div className="h-48 bg-base-200 rounded-lg overflow-hidden border border-base-100">
             <div className="h-full flex flex-col">
-              <div className="flex items-center justify-between p-3 bg-base-200 border-b border-base-100">
+              <div className="h-[48px] flex items-center justify-between px-2 py-3 bg-base-200 border-b border-base-100">
                 <div className="flex items-center gap-2">
                   <Terminal className="w-5 h-5 text-primary" />
-                  <h2 className="text-lg font-semibold">Console</h2>
+                  <h2 className="font-semibold">Console</h2>
+                </div>
+                <div className="flex items-center">
+                  {consoleOutput.length > 0 && (
+                    <button 
+                      className="btn btn-ghost btn-sm btn-square"
+                      onClick={() => setConsoleOutput([])}
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
                 </div>
               </div>
-              <div className="flex-1 bg-base-250 p-2 overflow-auto font-mono text-sm">
+              <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto font-mono text-sm">
                 {consoleOutput.length > 0 ? (
                   consoleOutput.map((output, index) => (
                     <div 
@@ -148,11 +160,13 @@ Promise.resolve().then(() => {
         <div className="w-1/2 flex gap-4">
           <div className="w-1/3 bg-base-200 rounded-lg overflow-hidden border border-base-100">
             <div className="h-full flex flex-col">
-              <div className="p-3 bg-base-200 border-b border-base-100 flex items-center gap-2">
-                <Layers className="w-5 h-5 text-primary" />
-                <h3 className="font-semibold">Call Stack</h3>
+              <div className="h-[48px] flex items-center justify-between px-2 py-3 bg-base-200 border-b border-base-100 flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <Layers className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold">Call Stack</h3>
+                </div>
               </div>
-              <div className="flex-1 bg-base-250 p-2 overflow-auto">
+              <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
                 <div className="text-sm text-gray-400">Empty</div>
               </div>
             </div>
@@ -165,7 +179,7 @@ Promise.resolve().then(() => {
                   <Globe className="w-5 h-5 text-primary" />
                   <h3 className="font-semibold">Web APIs</h3>
                 </div>
-                <div className="flex-1 bg-base-250 p-2 overflow-auto">
+                <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
                   <div className="text-sm text-gray-400">Empty</div>
                 </div>
               </div>
@@ -177,7 +191,7 @@ Promise.resolve().then(() => {
                   <ListTodo className="w-5 h-5 text-primary" />
                   <h3 className="font-semibold">Task Queue</h3>
                 </div>
-                <div className="flex-1 bg-base-250 p-2 overflow-auto">
+                <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
                   <div className="text-sm text-gray-400">Empty</div>
                 </div>
               </div>
@@ -189,7 +203,7 @@ Promise.resolve().then(() => {
                   <List className="w-5 h-5 text-primary" />
                   <h3 className="font-semibold">Microtask Queue</h3>
                 </div>
-                <div className="flex-1 bg-base-250 p-2 overflow-auto">
+                <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
                   <div className="text-sm text-gray-400">Empty</div>
                 </div>
               </div>
