@@ -99,7 +99,7 @@ Promise.resolve().then(() => {
                 </button>
               </div>
               <div className="flex-1 overflow-hidden relative z-20">
-                <div className="h-full mt-1">
+                <div className="h-full pt-2">
                   <Editor
                     height="100%"
                     defaultLanguage="javascript"
@@ -139,7 +139,7 @@ Promise.resolve().then(() => {
                   )}
                 </div>
               </div>
-              <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto font-mono text-sm">
+              <div className="flex-1 bg-base-250 p-2 overflow-auto font-mono text-sm">
                 {consoleOutput.length > 0 ? (
                   consoleOutput.map((output, index) => (
                     <div 
@@ -166,7 +166,7 @@ Promise.resolve().then(() => {
                   <h3 className="font-semibold">Call Stack</h3>
                 </div>
               </div>
-              <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
+              <div className="flex-1 bg-base-250 p-2 overflow-auto">
                 <div className="text-sm text-gray-400">Empty</div>
               </div>
             </div>
@@ -179,7 +179,7 @@ Promise.resolve().then(() => {
                   <Globe className="w-5 h-5 text-primary" />
                   <h3 className="font-semibold">Web APIs</h3>
                 </div>
-                <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
+                <div className="flex-1 bg-base-250 p-2 overflow-auto">
                   <div className="text-sm text-gray-400">Empty</div>
                 </div>
               </div>
@@ -191,7 +191,7 @@ Promise.resolve().then(() => {
                   <ListTodo className="w-5 h-5 text-primary" />
                   <h3 className="font-semibold">Task Queue</h3>
                 </div>
-                <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
+                <div className="flex-1 bg-base-250 p-2 overflow-auto">
                   <div className="text-sm text-gray-400">Empty</div>
                 </div>
               </div>
@@ -203,7 +203,7 @@ Promise.resolve().then(() => {
                   <List className="w-5 h-5 text-primary" />
                   <h3 className="font-semibold">Microtask Queue</h3>
                 </div>
-                <div className="flex-1 bg-base-250 p-2 mt-1 overflow-auto">
+                <div className="flex-1 bg-base-250 p-2 overflow-auto">
                   <div className="text-sm text-gray-400">Empty</div>
                 </div>
               </div>
