@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { Terminal, Code2, PlayCircle, Github, Globe, Layers, ListTodo, List, Trash2, PauseCircle, RotateCcw, Play, RefreshCw, Info } from 'lucide-react'
 import Editor from "@monaco-editor/react"
+import 'zone.js'
 
 function App() {
   const [code, setCode] = useState(
@@ -44,10 +45,8 @@ Promise.resolve().then(() => {
         new Function(code)
       } catch (e) {
         if (e instanceof SyntaxError) {
-          const match = e.message.match(/(?:at line (\d+))|(?:line (\d+))/i)
-          const lineNum = match ? (match[1] || match[2]) : null
           const cleanMessage = e.message.replace(/(?:at line \d+)|(?:line \d+)/i, '').trim()
-          const errorMsg = lineNum ? `Syntax Error at line ${lineNum}: ${cleanMessage}` : `Syntax Error: ${cleanMessage}`
+          const errorMsg = `Syntax Error: ${cleanMessage}`
           setConsoleOutput(prev => [...prev, errorMsg])
           return
         }
@@ -57,10 +56,7 @@ Promise.resolve().then(() => {
       safeFunction(consoleProxy)
     } catch (error) {
       if (error instanceof Error) {
-        const stack = error.stack || ''
-        const match = stack.match(/<anonymous>:(\d+):(\d+)/)
-        const lineNum = match ? match[1] : null
-        const errorMsg = lineNum ? `${error.name} at line ${lineNum}: ${error.message}` : `${error.name}: ${error.message}`
+        const errorMsg = `${error.name}: ${error.message}`
         setConsoleOutput(prev => [...prev, errorMsg])
       } else {
         setConsoleOutput(prev => [...prev, String(error)])
